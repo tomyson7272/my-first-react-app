@@ -2,6 +2,10 @@ export const SignUpActionTypes = {
   changeName: "setName",
   changeEmail: "setEmail",
   changePassword: "setPassword",
+
+  changeAddressStreet: "setStreet",
+  changeAddressZipcode: "setzipCode",
+  changeAddressHouseNumber: "sethouseNumber",
   reset: "reset",
 };
 

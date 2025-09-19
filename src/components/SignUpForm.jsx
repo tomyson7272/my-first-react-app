@@ -90,6 +90,19 @@ const SignUpForm = () => {
           >
             Reset Form
           </button>
+
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              dispatch({ type: SignUpActionTypes.address.street, value: initialState });
+            }}
+            className="bg-gray-400 p-1.5 text-black rounded-lg "
+          >
+            Street
+          </button>
+
+
+
         </div>
       </form>
 
