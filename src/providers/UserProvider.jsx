@@ -1,5 +1,4 @@
 import { createContext, useContext, useReducer } from "react";
-import signUpReducer, { initialState } from "../reducers/SignUpFormReducer";
 
 const UserContext = createContext();
 
