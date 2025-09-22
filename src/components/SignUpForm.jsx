@@ -1,5 +1,8 @@
 import { useReducer } from "react";
-import signUpReducer from "../reducers/SignUpFormReducer";
+import signUpReducer, {
+  hasErrors,
+  Hobbies,
+} from "../reducers/SignUpFormReducer";
 import { SignUpActionTypes } from "../reducers/SignUpFormReducer";
 import { initialState } from "../reducers/SignUpFormReducer";
 
@@ -7,6 +10,8 @@ const SignUpForm = () => {
   const [signUpData, dispatch] = useReducer(signUpReducer, initialState);
 
   const onSubmitForm = () => {};
+
+  console.log(hasErrors(signUpData.errors));
 
   return (
     <div>
@@ -27,6 +32,13 @@ const SignUpForm = () => {
             }
             className="border"
           />
+          {signUpData.errors
+            .filter((error) => error.key === "name")
+            .map((error) => (
+              <div key={error.key} className="text-red-500">
+                {error.message}
+              </div>
+            ))}
         </div>
         <div>
           <div>
@@ -44,6 +56,13 @@ const SignUpForm = () => {
             }
             className="border"
           />
+          {signUpData.errors
+            .filter((error) => error.key === "email")
+            .map((error) => (
+              <div key={error.key} className="text-red-500">
+                {error.message}
+              </div>
+            ))}
         </div>
         <div>
           <div>
@@ -61,6 +80,41 @@ const SignUpForm = () => {
             }
             className="border"
           />
+        </div>
+        <div>
+          {signUpData.errors
+            .filter((error) => error.key === "password")
+            .map((error) => (
+              <div key={error.key} className="text-red-500">
+                {error.message}
+              </div>
+            ))}
+        </div>
+        <div>
+          <div>
+            <label htmlFor="passwordConfirmation">Password Confirmation</label>
+          </div>
+          <input
+            type="password"
+            name="passwordConfirmation"
+            value={signUpData.passwordConfirmation}
+            onChange={(e) =>
+              dispatch({
+                type: SignUpActionTypes.changePasswordConfirmation,
+                value: e.target.value,
+              })
+            }
+            className="border"
+          />
+        </div>
+        <div>
+          {signUpData.errors
+            .filter((error) => error.key === "passwordConfirmation")
+            .map((error) => (
+              <div key={error.key} className="text-red-500">
+                {error.message}
+              </div>
+            ))}
         </div>
 
         <div>
@@ -80,7 +134,13 @@ const SignUpForm = () => {
             className="border"
           />
         </div>
-
+        {signUpData.errors
+          .filter((error) => error.key === "address.street")
+          .map((error) => (
+            <div key={error.key} className="text-red-500">
+              {error.message}
+            </div>
+          ))}
         <div>
           <div>
             <label htmlFor="houseNumber">House Number</label>
@@ -97,6 +157,13 @@ const SignUpForm = () => {
             }
             className="border"
           />
+          {signUpData.errors
+            .filter((error) => error.key === "address.houseNumber")
+            .map((error) => (
+              <div key={error.key} className="text-red-500">
+                {error.message}
+              </div>
+            ))}
         </div>
 
         <div>
@@ -104,9 +171,9 @@ const SignUpForm = () => {
             <label htmlFor="zipcode">Zipcode</label>
           </div>
           <input
-            type="text"
-            name="zipcode"
-            value={signUpData.address.zipcode}
+            type="number"
+            name="zipCode"
+            value={signUpData.address.zipCode}
             onChange={(e) =>
               dispatch({
                 type: SignUpActionTypes.changeAddressZipcode,
@@ -116,7 +183,42 @@ const SignUpForm = () => {
             className="border"
           />
         </div>
-
+        {signUpData.errors
+          .filter((error) => error.key === "address.zipCode")
+          .map((error) => (
+            <div key={error.key} className="text-red-500">
+              {error.message}
+            </div>
+          ))}
+        <div>
+          <div>
+            <label htmlFor="Hobbies">Hobbies</label>
+            {Hobbies.map((hobby) => (
+              <div key={hobby}>
+                <input
+                  type="checkbox"
+                  name="hobbies"
+                  value={hobby}
+                  checked={signUpData.hobbies.includes(hobby)}
+                  onChange={(e) => {
+                    if (e.target.checked) {
+                      dispatch({
+                        type: SignUpActionTypes.changeHobbies,
+                        value: [...signUpData.hobbies, hobby],
+                      });
+                    } else {
+                      dispatch({
+                        type: SignUpActionTypes.changeHobbies,
+                        value: signUpData.hobbies.filter((h) => h !== hobby),
+                      });
+                    }
+                  }}
+                />
+                {hobby}
+              </div>
+            ))}
+          </div>
+        </div>
 
         <div className="flex gap-2 items-center justify-center mt-10">
           <button
@@ -133,7 +235,8 @@ const SignUpForm = () => {
               e.preventDefault();
               console.log(e);
             }}
-            className="bg-gray-400 p-1.5 text-black rounded-lg"
+            className="bg-gray-400 p-1.5 text-black rounded-lg cursor-pointer disabled:cursor-not-allowed"
+            disabled={signUpData.errors.length > 0 ? true : false}
           >
             Login
           </button>
