@@ -11,8 +11,6 @@ const SignUpForm = () => {
 
   const onSubmitForm = () => {};
 
-  console.log(hasErrors(signUpData.errors));
-
   return (
     <div>
       <form>

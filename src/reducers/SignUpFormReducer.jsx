@@ -21,7 +21,7 @@ export const initialState = {
     houseNumber: "",
   },
   hobbies: [],
-  errors: [], // Array of { key, message }
+  errors: [],
 };
 
 export const Hobbies = [
@@ -38,15 +38,6 @@ export const Hobbies = [
   "Gaming",
   "Photography",
 ];
-
-export function hasErrors(obj) {
-  return Object.values(obj).some((value) => {
-    if (value && typeof value === "object") {
-      return hasErrors(value);
-    }
-    return value !== null && value !== "";
-  });
-}
 
 const removeError = (errors, key) => errors.filter((e) => e.key !== key);
 
