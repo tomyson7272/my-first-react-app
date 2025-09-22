@@ -1,8 +1,5 @@
 import { useReducer } from "react";
-import signUpReducer, {
-  hasErrors,
-  Hobbies,
-} from "../reducers/SignUpFormReducer";
+import signUpReducer, { Hobbies } from "../reducers/SignUpFormReducer";
 import { SignUpActionTypes } from "../reducers/SignUpFormReducer";
 import { initialState } from "../reducers/SignUpFormReducer";
 
