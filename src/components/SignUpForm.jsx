@@ -3,13 +3,17 @@ import signUpReducer, { Hobbies } from "../reducers/SignUpFormReducer";
 import { SignUpActionTypes } from "../reducers/SignUpFormReducer";
 import { initialState } from "../reducers/SignUpFormReducer";
 
+import { useUser } from "../providers/UserProvider";
+
 const SignUpForm = () => {
   const [signUpData, dispatch] = useReducer(signUpReducer, initialState);
+
+  const userData = useUser();
 
   const onSubmitForm = () => {};
 
   return (
-    <div>
+    <div className="flex flex-col items-center ">
       <form>
         <div>
           <div>
@@ -247,7 +251,7 @@ const SignUpForm = () => {
         </div>
       </form>
 
-      {JSON.stringify(signUpData)}
+      {JSON.stringify(userData)}
     </div>
   );
 };
