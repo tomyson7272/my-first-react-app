@@ -6,11 +6,9 @@ import App from "./App.jsx";
 import { UserProvider } from "./providers/UserProvider.jsx";
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <UserProvider>
-      <ThemeProvider>
-        <App />
-      </ThemeProvider>
-    </UserProvider>
-  </StrictMode>
+  <UserProvider>
+    <ThemeProvider>
+      <App />
+    </ThemeProvider>
+  </UserProvider>
 );
