@@ -10,8 +10,6 @@ const SignUpForm = () => {
 
   const userData = useUser();
 
-  const onSubmitForm = () => {};
-
   return (
     <div className="flex flex-col items-center ">
       <form>

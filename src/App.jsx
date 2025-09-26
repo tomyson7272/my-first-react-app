@@ -9,9 +9,9 @@ function App() {
   return (
     <>
       <div className={theme === "light" ? "bg-white" : "bg-gray-300"}>
-        <Toolbar />
-        <SignUpForm />
-        {/* <Counter /> */}
+        {/* <Toolbar />
+        <SignUpForm /> */}
+        <Counter />
       </div>
     </>
   );
