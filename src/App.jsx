@@ -2,6 +2,7 @@ import "./App.css";
 import Counter from "./components/Counter";
 import SignUpForm from "./components/SignUpForm";
 import Toolbar from "./components/Toolbar";
+import UserDisplay from "./components/UserDisplay";
 import { useTheme } from "./providers/ThemeProvider";
 
 function App() {
@@ -9,9 +10,10 @@ function App() {
   return (
     <>
       <div className={theme === "light" ? "bg-white" : "bg-gray-300"}>
-        <Toolbar />
-        <SignUpForm />
+        {/* <Toolbar />
+        <SignUpForm /> */}
         {/* <Counter /> */}
+        <UserDisplay />
       </div>
     </>
   );
