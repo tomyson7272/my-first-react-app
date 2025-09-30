@@ -221,7 +221,6 @@ const SignUpForm = () => {
           <button
             onClick={(e) => {
               e.preventDefault();
-              onSubmitForm();
             }}
             className="bg-gray-400 p-1.5 text-black rounded-lg "
           >

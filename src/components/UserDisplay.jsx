@@ -46,9 +46,7 @@ const UserDisplay = () => {
     <div ref={divRef} className="flex flex-col items-center">
       <select onChange={(e) => setUserId(e.target.value)}>
         {users.map((user) => (
-          <option key={user.id} value={user.id}>
-            {user.name}
-          </option>
+          <UserCard user={user} />
         ))}
       </select>
       {user && (

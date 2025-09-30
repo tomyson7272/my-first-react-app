@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useRef, useState } from "react";
+import React, { useReducer, useRef } from "react";
 import countReducer from "../reducers/CountReducer";
 
 const Counter = () => {
