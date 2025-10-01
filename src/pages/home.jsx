@@ -1,7 +1,8 @@
 import React from "react";
+import Toolbar from "../components/Toolbar";
 
 const Home = () => {
-  return <div>I am the Home page</div>;
+  return <Toolbar />;
 };
 
 export default Home;

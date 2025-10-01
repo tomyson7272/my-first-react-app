@@ -18,7 +18,7 @@ const UserDetails = () => {
     getUser();
   });
 
-  return <div>{user && <p>{user.name}</p>}</div>;
+  return <div>{user ? <p>{user.name}</p> : <p>Loading User....</p>}</div>;
 };
 
 export default UserDetails;
