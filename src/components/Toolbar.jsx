@@ -1,12 +1,14 @@
-import { useTheme } from "../providers/ThemeProvider";
+import useThemeStore from "../stores/use-theme";
 
 const Toolbar = () => {
-  const { toggleTheme, theme } = useTheme();
+  const themeState = useThemeStore();
+
+  console.log(themeState.theme);
 
   return (
     <div>
       <button
-        onClick={toggleTheme}
+        onClick={themeState.toggleTheme}
         className="bg-blue-400 rounded p-3 cursor-pointer"
       >
         {" "}
